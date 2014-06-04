@@ -1,6 +1,10 @@
 CREATE SCHEMA anzsrc AUTHORIZATION sa;
 SET SCHEMA anzsrc;
 
+-- Source data is from https://github.com/anzsrco/anzsrco/blob/master/anzsrc_data/for08.csv
+--    and https://github.com/anzsrco/anzsrco/blob/master/anzsrc_data/seo08.csv
+-- The identifiers should match those in https://github.com/anzsrco/anzsrco/tree/gh-pages/latest
+
 -- FOR Codes
 CREATE TEXT TABLE forcodes (div VARCHAR(255), grp VARCHAR(255), name VARCHAR(255), code CHAR(6));
 SET TABLE forcodes SOURCE "data/forcodes.csv;fs=,;ignore_first=true;quoted=true";
@@ -62,3 +66,8 @@ INSERT INTO seoexport (id, code, label, broader, sector) (
 );
 
 COMMIT;
+
+SET TABLE forcodes SOURCE OFF;
+SET TABLE forexport SOURCE OFF;
+SET TABLE seocodes SOURCE OFF;
+SET TABLE seoexport SOURCE OFF;
