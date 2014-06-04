@@ -1,0 +1,10 @@
+# A personal Memory-Only (non-persistent) database.
+urlid mem
+url jdbc:hsqldb:mem:memdb
+username SA
+password
+
+urlid file
+url jdbc:hsqldb:file:db/filedb
+username SA
+password
